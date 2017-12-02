@@ -1,3 +1,0 @@
-[submodule "libsnark"]
-	path = libsnark
-	url = https://github.com/iiisthu/libsnark
