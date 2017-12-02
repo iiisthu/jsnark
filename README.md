@@ -37,8 +37,6 @@ Verify the installed version by `java -version`. In case it is not 1.8 or later,
 	$ sudo apt-get install junit4
 
 ### jsnark Installation Instructions
-
-- Run:
  
         $ git clone --recursive https://github.com/iiisthu/jsnark.git
 	$ cd jsnark/libsnark && mkdir build && cd build
@@ -46,9 +44,7 @@ Verify the installed version by `java -version`. In case it is not 1.8 or later,
 	$ make
 	$ make install
 
-The makefile has been modified to produce the one needed executable for the interface. The executable will appear under `/usr/local/bin  `
-
-- Compile and test the JsnarkCircuitBuilder project as in the next section.
+The CMakeLists.txt has been modified to produce the one needed executable for the interface. The executable will appear under `/usr/local/bin  `
 
 ### Running and Testing JsnarkCircuitBuilder
 
