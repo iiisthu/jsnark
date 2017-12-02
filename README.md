@@ -38,7 +38,8 @@ Verify the installed version by `java -version`. In case it is not 1.8 or later,
 
 ### jsnark Installation Instructions
 
-- Run: 
+- Run:
+ 
         $ git clone --recursive https://github.com/iiisthu/jsnark.git
 	$ cd jsnark/libsnark && mkdir build && cd build
 	$ cmake -DCURVE=BN128 ..
