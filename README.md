@@ -10,15 +10,21 @@ This is a Java library for building circuits for preprocessing zk-SNARKs. The li
 - JDK 8. 
 - Junit 4.
 
-For Ubuntu 14.04, the following can be done to install the above:
+#### Libsnark prerequisites
 
-- To install libsnark prerequisites: 
+Concretely, here are the requisite packages in some Linux distributions:
 
-	`$ sudo apt-get install build-essential git libgmp3-dev libprocps3-dev libgtest-dev python-markdown libboost-all-dev libssl-dev`
+* On Ubuntu 16.04 LTS:
+
+        $ sudo apt-get install build-essential cmake git libgmp3-dev libprocps4-dev python-markdown libboost-all-dev libssl-dev
+
+* On Ubuntu 14.04 LTS:
+
+        $ sudo apt-get install build-essential cmake git libgmp3-dev libprocps3-dev python-markdown libboost-all-dev libssl-dev
 
 Note: Don't clone libsnark from `https://github.com/scipr-lab/libsnark`. Make sure to use the modified libsnark submodule within the jsnark cloned repo in the next section.
 
-- To install JDK 8: 
+#### JDK 8: 
 
 	`$ sudo add-apt-repository ppa:webupd8team/java`
 
@@ -28,23 +34,24 @@ Note: Don't clone libsnark from `https://github.com/scipr-lab/libsnark`. Make su
 
 Verify the installed version by `java -version`. In case it is not 1.8 or later, try `$ sudo update-java-alternatives -s java-8-oracle`
 
-- To install Junit4: 
+#### Junit4: 
 
 	`$ sudo apt-get install junit4`
 
 ### jsnark Installation Instructions
 
-- Run `$ git clone --recursive https://github.com/akosba/jsnark.git`
+- Run: 
+        `$ git clone --recursive https://github.com/iiisthu/jsnark.git`
 
-- Run:
+	`$ cd jsnark/libsnark && mkdir build && cd build`
 
-	`$ cd jsnark/libsnark`
-
-	`$ ./prepare-depends.sh`
+	`$ cmake -DCURVE=BN128 ..`
 
 	`$ make`  
 
-The makefile has been modified to produce the one needed executable for the interface. The executable will appear under src/interface  
+	`$ make install`  
+
+The makefile has been modified to produce the one needed executable for the interface. The executable will appear under /usr/local/bin  
 
 - Compile and test the JsnarkCircuitBuilder project as in the next section..
 
@@ -57,7 +64,7 @@ To compile the JsnarkCircuitBuilder project via command line:
 
 The classpath of junit4 may need to be adapted accordingly, in case the jar is located elsewhere.
 
-Before running the following, make sure the `PATH_TO_LIBSNARK_EXEC` property in `config.properties` points to the path of the `run_libsnark` executable. 
+Before running the following, make sure the `PATH_TO_LIBSNARK_EXEC` property in `config.properties` points to the `interface_jsnark` executable. 
 
 To run a simple example, the following command can be used
 
@@ -111,6 +118,6 @@ The gadget library of jsnark shares some similarities with the C++ Gadget librar
 The code is undergoing more testing and integration of other features. The future versions of this library will include more documentation, examples and optimizations.
 
 ### Author
-This code is developed and maintained by Ahmed Kosba <akosba@cs.umd.edu>. Please email for any questions.
+This code is forked from [Jsnark project](https://github.com/akosba/jsnark), which is developed and maintained by Ahmed Kosba <akosba@cs.umd.edu>. Please email for any questions.
 
  
