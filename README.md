@@ -1,4 +1,4 @@
-##jsnark
+## Jsnark
 
 This is a Java library for building circuits for preprocessing zk-SNARKs. The library uses libsnark as a backend (https://github.com/scipr-lab/libsnark), and can integrate circuits produced by the Pinocchio compiler (https://vc.codeplex.com/SourceControl/latest) when needed by the programmer. The code consists of two main parts:
 - `JsnarkCircuitBuilder`: A Java project that has a Gadget library for building/augmenting circuits. (Check the `src/examples` package)
@@ -26,41 +26,36 @@ Note: Don't clone libsnark from `https://github.com/scipr-lab/libsnark`. Make su
 
 #### JDK 8: 
 
-	`$ sudo add-apt-repository ppa:webupd8team/java`
-
-	`$ sudo apt-get update`
-
-	`$ sudo apt-get install oracle-java8-installer`
+	$ sudo add-apt-repository ppa:webupd8team/java
+	$ sudo apt-get update
+	$ sudo apt-get install oracle-java8-installer
 
 Verify the installed version by `java -version`. In case it is not 1.8 or later, try `$ sudo update-java-alternatives -s java-8-oracle`
 
 #### Junit4: 
 
-	`$ sudo apt-get install junit4`
+	$ sudo apt-get install junit4
 
 ### jsnark Installation Instructions
 
 - Run: 
-        `$ git clone --recursive https://github.com/iiisthu/jsnark.git`
+        $ git clone --recursive https://github.com/iiisthu/jsnark.git
+	$ cd jsnark/libsnark && mkdir build && cd build
+	$ cmake -DCURVE=BN128 ..
+	$ make
+	$ make install
 
-	`$ cd jsnark/libsnark && mkdir build && cd build`
+The makefile has been modified to produce the one needed executable for the interface. The executable will appear under `/usr/local/bin  `
 
-	`$ cmake -DCURVE=BN128 ..`
-
-	`$ make`  
-
-	`$ make install`  
-
-The makefile has been modified to produce the one needed executable for the interface. The executable will appear under /usr/local/bin  
-
-- Compile and test the JsnarkCircuitBuilder project as in the next section..
+- Compile and test the JsnarkCircuitBuilder project as in the next section.
 
 ### Running and Testing JsnarkCircuitBuilder
+
 To compile the JsnarkCircuitBuilder project via command line:
 
-    $ cd JsnarkCircuitBuilder
-    $ mkdir -p bin
-    $ javac -d bin -cp /usr/share/java/junit4.jar  $(find ./src/* | grep ".java$")
+        $ cd JsnarkCircuitBuilder
+        $ mkdir -p bin
+        $ javac -d bin -cp /usr/share/java/junit4.jar  $(find ./src/* | grep ".java$")
 
 The classpath of junit4 may need to be adapted accordingly, in case the jar is located elsewhere.
 
@@ -68,11 +63,11 @@ Before running the following, make sure the `PATH_TO_LIBSNARK_EXEC` property in 
 
 To run a simple example, the following command can be used
 
-    $ java -cp bin examples.generators.SimpleCircuitGenerator
+        $ java -cp bin examples.generators.SimpleCircuitGenerator
 
 To run one of the JUnit tests available:
 
-    $ java -cp bin:/usr/share/java/junit4.jar org.junit.runner.JUnitCore  examples.tests.SHA256_Test
+        $ java -cp bin:/usr/share/java/junit4.jar org.junit.runner.JUnitCore  examples.tests.SHA256_Test
 
 Note: An IDE, e.g. Eclipse, or possibly the ant tool can be used instead to build and run the Java project more conveniently.
 
