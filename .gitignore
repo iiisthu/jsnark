@@ -4,7 +4,10 @@
 *.d
 *.*~
 bin
+JsnarkCircuitBuilder.eml
+JsnarkCircuitBuilder.iml
 .project
+.idea
 .settings
 .classpath
 *.arith
